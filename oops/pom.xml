@@ -8,7 +8,6 @@
     <artifactId>oops</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
     <build>
         <plugins>
             <plugin>
