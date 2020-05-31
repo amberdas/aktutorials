@@ -11,10 +11,11 @@ public interface Graph<T> {
     void addAll(Collection<T> collection);
     boolean addEdge(T sourceVertex, T destinationVertex);
     boolean removeEdge(T sourceVertex, T destinationVertex);
-    Iterable getAdjacentVertices(T vertex);
+    Iterable<T> getAdjacentVertices(T vertex);
     int getNumberOfVertex();
     int getNumberOfEdge();
     boolean isEdgeExist(T sourceVertex, T destinationVertex);
     void display();
+    Iterable<T> getVertices();
 
 }

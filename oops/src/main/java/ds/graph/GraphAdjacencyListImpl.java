@@ -34,7 +34,7 @@ public class GraphAdjacencyListImpl<T>  implements Graph<T> {
         if(isVertexExist(sourceVertex) && isVertexExist(destinationVertex)) {
             vertices.get(sourceVertex).add(destinationVertex);
             vertices.get(destinationVertex).add(sourceVertex);
-            numberOfEdge+=2;
+            numberOfEdge++;
             return true;
         }
         return false;
@@ -52,7 +52,7 @@ public class GraphAdjacencyListImpl<T>  implements Graph<T> {
     }
 
     @Override
-    public Iterable getAdjacentVertices(T vertex) {
+    public Iterable<T> getAdjacentVertices(T vertex) {
         return vertices.get(vertex);
     }
 
@@ -83,6 +83,10 @@ public class GraphAdjacencyListImpl<T>  implements Graph<T> {
         vertices.forEach((vertex, adjacentVertices) -> {
             System.out.print("Vertex : "+vertex);
             adjacentVertices.forEach(node -> System.out.print(" -> " + node));System.out.println();} );
+    }
+
+    public Iterable<T> getVertices() {
+        return vertices.keySet();
     }
 
     private boolean isVertexExist(T vertex) {
