@@ -17,10 +17,11 @@ public class GraphClient
 
         //basicGraphOperation(graph);
 
-        dfsTraversal(graph,"Delhi","Begusarai","Goa","Begusarai");
+        //dfsTraversal(graph,"Delhi","Begusarai","Goa","Begusarai");
 
         Graph<String> linkedinConnectionGraph = initLinkedinConnectionGraph();
         dfsTraversal(linkedinConnectionGraph,"Amber","Amit Jha","Random","Prabhat");
+        bfsTraversal(linkedinConnectionGraph,"Amber","Amit Jha","Random","Prabhat");
 
     }
 
@@ -108,6 +109,35 @@ public class GraphClient
         System.out.println("Path from "+source+" to "+destination1+":");
 
         Stack<String> path = dfs.getPath(destination1);
+
+        StringBuffer pathString = new StringBuffer();
+        while(!path.isEmpty()){
+            pathString.append(path.pop()+"->");
+        }
+
+        System.out.println(pathString.substring(0,pathString.length()-2));
+
+    }
+
+    private static void bfsTraversal(Graph<String> graph, String source, String destination1, String destination2, String destination3) {
+
+        BFS<String> bfs = new BFS<>(graph,source);
+
+        System.out.println("BFS Traversal: ");
+        System.out.println(bfs.getBfsTraversal());
+
+        System.out.println("\nEdgeTO:");
+        System.out.println(bfs.getEdgeTo());
+
+
+        System.out.println("Is "+source+" has connection to "+destination2+":" + bfs.hasPath(destination2));
+        System.out.println("Is "+source+" has connection to "+destination3+":" + bfs.hasPath(destination3));
+
+        System.out.println("BFS Path from "+source+" to "+destination1+":");
+
+        System.out.println(destination1+" is "+ bfs.getDistanceTo().get(destination1) + " connection away from "+source);
+
+        Stack<String> path = bfs.getPath(destination1);
 
         StringBuffer pathString = new StringBuffer();
         while(!path.isEmpty()){
